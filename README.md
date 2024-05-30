@@ -7,6 +7,5 @@ Some of the differences between Apache and Nginx include:
 
 |      Apache                                                   |       Nginx                                                   |
 | ---------------------------------------------------------     |---------------------------------------------------------------|
-| Apache runs on all Unix like systems such as Linux, BSD, etc. as well as | Nginx runs on modern Unix like systems; however |
-|completely supports windows                                     |it has limited support for Windows.|
+| Apache runs on all Unix like systems such as Linux, BSD, etc. as well as completely supports windows | Nginx runs on modern Unix like systems; however it has limited support for Windows.|
 | Apache uses a multi-threaded approach to process client requests.|Nginx follows an event-driven approach to serve client requests.|
