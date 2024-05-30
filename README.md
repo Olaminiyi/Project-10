@@ -97,39 +97,57 @@ Update the nameservers in the domain provider website with the 4 generated name 
 
 ![Alt text](images/10.12.png)
 
-- remove the default site so that the reverse proxy will be redirecting to the newly configuration file
-- sudo rm -f /etc/nginx/sites-enabled/default
+Remove the default site so that the reverse proxy will be redirecting to the newly configuration file
+```
+sudo rm -f /etc/nginx/sites-enabled/default
+```
 ![Alt text](images/10.13.png)
 
-- check whether the nginx configuration is correct
-- sudo nginx -t
+Check whether the nginx configuration is correct
+```
+sudo nginx -t
+```
 ![Alt text](images/10.14.png)
 
 
-5. Install certbot and request for an SSL/TLS certificate
-    - Make sure snapd service is active and running
-    - sudo systemctl status snapd
-  ![Alt text](images/10.16.png)  
+### Install certbot and request for an SSL/TLS certificate
 
-  - Install certbot
-  - sudo snap install --classic certbot
-  ![Alt text](images/10.17.png)
+Make sure snapd service is active and running
+```
+sudo systemctl status snapd
+```
+![Alt text](images/10.16.png)  
 
-  - Request your certificate (just follow the certbot instructions – you will need to choose which domain you want your certificate to be issued for, domain name will be looked up from nginx.conf file so make sure you have updated it on step 4)
-    - sudo ln -s /snap/bin/certbot /usr/bin/certbot
-    - sudo certbot --nginx
-    ![Alt text](images/10.18.png)
-    ![Alt text](images/10.19.png)
+### Install certbot
+```  
+sudo snap install --classic certbot
+```  
+![Alt text](images/10.17.png)
 
-6. Set up periodical renewal of your SSL/TLS certificate
-By default, LetsEncrypt certificate is valid for 90 days, so it is recommended to renew it at least every 60 days or more frequently.
-- You can test renewal command in dry-run mode
- - sudo certbot renew --dry-run
- ![Alt text](images/10.20.png)
+> [!NOTE] 
+> Request your certificate (just follow the certbot instructions – you will need to choose which domain you want your certificate to be issued for, domain name will be looked up from nginx.conf file so make sure you have updated it when we installed and configured Nginx asload balancer)
 
- - Best practice is to have a scheduled job that to run renew command periodically. Let us configure a cronjob to run the command twice a day.
+```
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+sudo certbot --nginx
+```    
+![Alt text](images/10.18.png)
+![Alt text](images/10.19.png)
 
-To do so, lets edit the crontab file with the following command:
-    - crontab -e
+> [!NOTE] 
+> Set up periodical renewal of your SSL/TLS certificate
+>By default, LetsEncrypt certificate is valid for 90 days, so it is recommended to renew it at least every 60 days or more frequently.
 
+You can test renewal command in dry-run mode
+```
+sudo certbot renew --dry-run
+```
+![Alt text](images/10.20.png)
+
+Best practice is to have a scheduled job that to run renew command periodically. Let us configure a cronjob to run the command twice a day.
+
+To do so, lets edit the `crontab` file with the following command:
+```
+crontab -e
+```
 ![Alt text](images/10.21.png)
