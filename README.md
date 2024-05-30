@@ -78,12 +78,13 @@ create a hosted name in the Route 53 with the registered domain name
 
 **Create 2 records**
 copy the public ip address of the load balancer 
-    - point the new record to the ip address of the load balancer
+- point the new record to the ip address of the load balancer
+- leave the record name of the first one empty
 
-    - leave the record name of the first one empty
-    ![Alt text](images/10.10.png)
+![Alt text](images/10.10.png)
 
-    - create another record referencing www
+**Create another record referencing www**
+
 ![Alt text](images/10.11.png)
 
 - **Update A record in your registrar to point to Nginx LB using Elastic IP address**
