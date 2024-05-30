@@ -87,12 +87,14 @@ copy the public ip address of the load balancer
 
 ![Alt text](images/10.11.png)
 
-- **Update A record in your registrar to point to Nginx LB using Elastic IP address**
-    - update the nameservers in the domain provider website with the 4 generated name servers generated when the hosted name was created
-    ![Alt text](<images/Screenshot 2023-07-20 at 16.28.30.png>)
+**Update A record in your registrar to point to Nginx LB using Elastic IP address**
+Update the nameservers in the domain provider website with the 4 generated name servers generated when the hosted name was created
+
+![Alt text](<images/Screenshot 2023-07-20 at 16.28.30.png>)
 
 
- # update the nginx config file with the domain name
+**update the nginx config file with the domain name**
+
 ![Alt text](images/10.12.png)
 
 - remove the default site so that the reverse proxy will be redirecting to the newly configuration file
